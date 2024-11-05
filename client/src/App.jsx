@@ -35,18 +35,18 @@ function App() {
   }, []);
 
   const fetchAirports = async () => {
-    const response = await fetch('http://localhost:5000/airports', {
+    const response = await fetch('http://127.0.0.1:5000/airports', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
     });
     const data = await response.json();
-    return data.airports;
+    return data;
   };
 
   const fetchPrediction = async (dayOfWeek, airportId) => {
-    const response = await fetch(`http://localhost:5000/predict?day_of_week=${dayOfWeek}&airport_id=${airportId}`);
+    const response = await fetch(`http://127.0.0.1:5000/predict?day_of_week=${dayOfWeek}&airport_id=${airportId}`);
     const modelPrediction = await response.json();
     setPrediction(modelPrediction);
     console.log('response in fetch:', modelPrediction);
